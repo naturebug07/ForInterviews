@@ -41,6 +41,7 @@ public class MobilePhone {
 					String nameTosearch= scanner.next();
 					int j=1;
 					for (Contacts x:contactsDetailsList) {
+						System.out.println(j);
 
 						if (x.getName().equalsIgnoreCase(nameTosearch)) {
 							System.out.println("OK here is your contact details");
@@ -48,6 +49,7 @@ public class MobilePhone {
 							System.out.print("Phone::"+x.phoneNumber +"\n");
 							System.out.println("1. Update existing contact");
 							System.out.println("2. Delete existing contact");
+							System.out.println("3. Home");
 							int opt=scanner.nextInt();
 
 							switch (opt){
@@ -58,20 +60,24 @@ public class MobilePhone {
 									contactsDetailsList.get(j-1).setPhoneNumber(scanner.next());
 									break;
 								case 2:
-									contactsDetailsList.remove(0);
+									System.out.println(j);
+									contactsDetailsList.remove((j-1));
 									System.out.println("contact deleted");
+									break;
+								case 3:
 									break;
 							}
 
 
 						}
-						else if (j == contactsDetailsList.size()) {
+						else if (j== contactsDetailsList.size()) {
 							System.out.println("oops! you might not have added this contact,press 1 to add");
 						}
 						j++;
 					}
 					break;
 				case 4:
+
 					quit="quit";
 					break;
 				default:
