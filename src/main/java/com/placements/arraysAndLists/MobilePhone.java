@@ -40,6 +40,7 @@ public class MobilePhone {
 					System.out.println("enter name of contact to search");
 					String nameTosearch= scanner.next();
 					int j=1;
+					String found="no";
 					for (Contacts x:contactsDetailsList) {
 						System.out.println(j);
 
@@ -58,8 +59,10 @@ public class MobilePhone {
 									contactsDetailsList.get(j-1).setName(scanner.next());
 									System.out.println("enter phone");
 									contactsDetailsList.get(j-1).setPhoneNumber(scanner.next());
+									found="yes";
 									break;
 								case 2:
+									//some problem with deleting as the size of array is decreased while it is still processing
 									System.out.println(j);
 									contactsDetailsList.remove((j-1));
 									System.out.println("contact deleted");
@@ -70,7 +73,7 @@ public class MobilePhone {
 
 
 						}
-						else if (j== contactsDetailsList.size()) {
+						else if (j== contactsDetailsList.size() && found.equalsIgnoreCase("no")) {
 							System.out.println("oops! you might not have added this contact,press 1 to add");
 						}
 						j++;
